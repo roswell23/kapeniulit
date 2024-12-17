@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+  }
+body {
+background-image: url(./img/bg.png);
+font-family: Arial, sans-serif;
+line-height: 1.6;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+}
+:root{
+    --bg-color: #0c0c0c;
+    --text-color: #fff;
+    --main-color: #806748;
+    --big-font: 6.6rem;
+    --p-font: 1rem;
+    --light-color:#b69267;
+}
+.navbar {
+    background-color: transparent; /* Light background */
+    padding: 1rem 2rem;
+    justify-content: space-between;
+    transition: background-color 0.5s ease-in-out; /* Smooth transition for background color */
+}
+.navbar-brand {
+    font-weight: bold;
+}
+.navbar.scrolled {
+    background-color:  transparent; /* Dark background on scroll */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* Navbar brand styles */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.9); /* Light background with slight transparency */
+    padding: 1rem 2rem;
+    justify-content: space-between;
+    transition: background-color 0.5s ease-in-out;
+    
+}
+
+.navbar.scrolled {
+    background-color: transparent; /* transparent mode kasi gusto ko pake mo ba! */
+    box-shadow: var(--text-color); /* Enhanced shadow on scroll */
+}
+.nav-link {
+    color: var(--text-color); /* white color for view text  */
+    font-size: 1rem;
+    margin-left: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: var(--main-color); /* Bootstrap blue color for hover state */
+    transform: translateY(-3px);
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #0056b3; /* Darker blue for active state */
+    transform: scale(1.1);
+}
+.navbar-toggler {
+    border: 2px solid var(--text-color);
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--main-color);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.menu{
+    color: var(--text-color);
+}
+.menu .card {
+    margin-bottom: 30px;
+    background: url(../../img/bg.png);
+    color: var(--text-color);
+    
+}
+.card {
+    color: var(--text-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 30px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px var(--main-color);
+}
+
+.menu-img {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover;
+}
+.luxury-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-text.luxury-price,
+.card-text {
+    font-size: 0.9rem;  /* Makes the price smaller */
+    color: var(--text-color);        /* Optional: adds a softer color */
+    margin-bottom: 0;   /* Optional: reduces bottom spacing */
+}
+.luxury-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #d4af37;
+    color: #1a1a1a;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.luxury-card .card-title {
+    color: #d4af37;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.luxury-card .card-description {
+    color: silver;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.luxury-price {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.luxury-menu {
+    margin-top: 6rem;
+    margin-top: 100px;
+    margin-top: 10vh;
+    min-height: 100vh;
+}
+
+/* General Styles */
+
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .menu-img {
+        height: 220px;
+    }
+    
+    .luxury-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 1rem !important;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 0;
+    }
+    
+    .menu h2 {
+        font-size: 2.2rem;
+    }
+    
+    .luxury-card {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-img {
+        height: 200px;
+    }
+    
+    .luxury-title {
+        font-size: 2rem;
+    }
+    
+    .luxury-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .card {
+        margin-bottom: 20px;
+    }
+    
+    .card-body {
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .menu {
+        padding-top: 80px;
+    }
+    
+    .menu h2 {
+        font-size: 1.8rem;
+    }
+    
+    .luxury-badge {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .card-title {
+        font-size: 1.2rem;
+    }
+    
+    .luxury-price {
+        font-size: 1.2rem;
+    }
+    
+    .card-description {
+        font-size: 0.9rem;
+    }
+}
+
+/* Animation for cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeInUp 0.6s ease-out;
+}
+footer {
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+/* Add these styles for the hamburger button */
+.custom-toggler {
+    border: 2px solid var(--text-color) !important;
+    padding: 8px !important;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+}
+
+.custom-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Update your Bootstrap scripts to version 5 */
