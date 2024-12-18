@@ -1,96 +1,44 @@
-// Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
-    // Form handling
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
+    // Contact form functionality
+    const contactForm = document.querySelector('#contactForm'); // Updated selector to match the form ID
+    contactForm.addEventListener('submit', handleFormSubmit);
 
-            try {
-                // Send data to API endpoint
-                const response = await fetch('https://api.yourwebsite.com/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
-                });
+    // Form validation
+    function handleFormSubmit(event) {
+        event.preventDefault(); // Prevent default form submission
+        // Validate form fields
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
+        if (!name || !email || !subject || !message) {
+            alert('Please fill in all fields.'); // Alert for validation error
+            return;
+        }
 
-                const result = await response.json();
-                
-                // Show success message
-                alert('Thank you for your message! We will get back to you soon.');
-                contactForm.reset();
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Sorry, there was an error sending your message. Please try again later.');
-            }
-        });
+        // Proceed with form submission (e.g., send data to server)
+        console.log('Form submitted:', { name, email, subject, message });
+        alert('Thank you for your message! We will get back to you soon.'); // Alert for successful submission
+        contactForm.reset(); // Reset form after submission
     }
 
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // Navbar background change on scroll
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('navbar-scrolled');
-        } else {
-            navbar.classList.remove('navbar-scrolled');
-        }
-    });
-
-    // Close mobile menu when clicking a link
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navbarCollapse = document.querySelector('.navbar-collapse');
+    // Navbar effects
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navbarCollapse.classList.contains('show')) {
-                navbarCollapse.classList.remove('show');
-            }
-        });
+        link.addEventListener('mouseenter', handleNavLinkHover);
+        link.addEventListener('mouseleave', handleNavLinkLeave);
+        link.addEventListener('click', handleNavLinkClick);
     });
-});
 
-// Add some CSS animations when elements come into view
-const observerOptions = {
-    threshold: 0.2
-};
+    // Scroll effect for navbar
+    window.addEventListener('scroll', handleNavbarScroll);
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in-visible');
-        }
+    // Initial display of coffees
+    displayCoffees();
+
+    // Coffee filter functionality
+    document.getElementById('coffee-filter').addEventListener('change', function() {
+        displayCoffees(this.value);
     });
-}, observerOptions);
-
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-    section.classList.add('fade-in');
-    observer.observe(section);
-}); 
+});  
